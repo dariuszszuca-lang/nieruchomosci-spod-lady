@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "@/lib/firebase";
 import { type Product, CATEGORIES } from "@/lib/types";
 
 interface ProductFormProps {
@@ -13,8 +14,10 @@ interface ProductFormProps {
 
 export function ProductForm({ product }: ProductFormProps) {
   const router = useRouter();
+  const fileRef = useRef<HTMLInputElement>(null);
   const [saving, setSaving] = useState(false);
-  const [imageUrl, setImageUrl] = useState(product?.image || "");
+  const [imagePreview, setImagePreview] = useState(product?.image || "");
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   const [form, setForm] = useState({
     name: product?.name || "",
@@ -35,11 +38,30 @@ export function ProductForm({ product }: ProductFormProps) {
     }));
   }
 
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  }
+
+  async function uploadImage(file: File): Promise<string> {
+    const filename = `products/${Date.now()}-${file.name}`;
+    const storageRef = ref(storage, filename);
+    await uploadBytes(storageRef, file);
+    return getDownloadURL(storageRef);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
 
     try {
+      let imageUrl = product?.image || "";
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+      }
+
       const data = {
         name: form.name,
         slug: form.slug,
@@ -48,7 +70,6 @@ export function ProductForm({ product }: ProductFormProps) {
         category: form.category,
         region: form.region,
         image: imageUrl,
-
         images: product?.images || [],
         active: form.active,
         featured: form.featured,
@@ -75,25 +96,31 @@ export function ProductForm({ product }: ProductFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-8">
-      {/* Image */}
+      {/* Image upload */}
       <div className="bg-white rounded-2xl border border-gray-200 p-6">
         <h2 className="font-semibold text-foreground mb-4">Grafika produktu</h2>
         <div className="flex items-start gap-6">
-          {imageUrl && (
-            <div className="w-40 h-40 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0">
-              <Image src={imageUrl} alt="Preview" width={160} height={160} className="w-full h-full object-cover" />
-            </div>
-          )}
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-1">URL grafiki</label>
-            <input
-              type="url"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm"
-              placeholder="https://example.com/image.jpg"
-            />
-            <p className="mt-2 text-xs text-gray-400">Wklej URL grafiki lub zostaw puste</p>
+          <div
+            onClick={() => fileRef.current?.click()}
+            className="w-40 h-40 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors overflow-hidden bg-gray-50"
+          >
+            {imagePreview ? (
+              <Image src={imagePreview} alt="Preview" width={160} height={160} className="w-full h-full object-cover" unoptimized />
+            ) : (
+              <div className="text-center text-gray-400">
+                <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="text-xs">Kliknij aby dodać</span>
+              </div>
+            )}
+          </div>
+          <input ref={fileRef} type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+          <div className="text-sm text-gray-500">
+            <p>Kliknij kwadrat aby wgrać grafikę</p>
+            <p className="mt-1">Zalecany rozmiar: 800x600px</p>
+            <p>Formaty: JPG, PNG, WebP</p>
+            {imageFile && <p className="mt-2 text-primary font-medium">{imageFile.name}</p>}
           </div>
         </div>
       </div>
