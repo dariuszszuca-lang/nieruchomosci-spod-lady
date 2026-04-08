@@ -71,7 +71,7 @@ export default function PoznajNas() {
     <>
       <PageHero
         title="Poznaj nas"
-        subtitle="Za Nieruchomościami Spod Lady stoją ludzie, którzy wierzą, że współpraca zmienia branżę nieruchomości na lepsze."
+        subtitle="Za Nieruchomościami Spod&nbsp;Lady stoją ludzie, którzy wierzą, że współpraca zmienia branżę nieruchomości na lepsze."
         badge="Nasz zespół"
         image="/images/bg-konferencja.jpg"
       />
@@ -113,7 +113,7 @@ export default function PoznajNas() {
               Kto troszczy się o naszą społeczność?
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {team.map((person) => (
               <div
                 key={person.name}

@@ -30,7 +30,7 @@ export function PageHero({ title, subtitle, badge, image }: PageHeroProps) {
             {badge}
           </div>
         )}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight font-[family-name:var(--font-montserrat)] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight font-[family-name:var(--font-montserrat)] tracking-tight">
           {title}
         </h1>
         {subtitle && (

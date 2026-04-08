@@ -304,8 +304,8 @@ export default function Home() {
       </section>
 
       {/* STATS BAR */}
-      <section className="relative -mt-16 z-20 mx-auto max-w-5xl px-4">
-        <div className="bg-white rounded-3xl shadow-2xl shadow-black/5 p-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="relative -mt-16 z-20 mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl shadow-black/5 p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
           {[
             { number: "1600+", label: "Agentów" },
             { number: "8", label: "Regionów" },
@@ -425,11 +425,11 @@ export default function Home() {
               Budujemy silną markę zawodu i podnosimy standardy
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="card-hover group bg-white rounded-2xl p-8 border border-border/50 text-center"
+                className="card-hover group bg-white rounded-2xl p-6 sm:p-8 border border-border/50 text-center"
               >
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                   {value.icon}
@@ -462,11 +462,11 @@ export default function Home() {
               Dlaczego warto być członkiem?
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-primary/50 transition-all hover:bg-white/10"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-primary/50 transition-all hover:bg-white/10"
               >
                 <div className="text-primary mb-4">{benefit.icon}</div>
                 <h3 className="text-lg font-semibold mb-3">{benefit.title}</h3>
@@ -582,7 +582,7 @@ export default function Home() {
               Sprawdź jak do nas dołączyć
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {regions.map((region) => (
               <Link
                 key={region.name}
@@ -608,7 +608,7 @@ export default function Home() {
       </section>
 
       {/* PARTNERS — marquee */}
-      <section className="py-16 border-y border-border/50 overflow-hidden">
+      <section className="py-16 border-y border-border/50 overflow-hidden max-w-[100vw]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-text-secondary uppercase tracking-wider font-semibold mb-10">
             Współpracujemy
@@ -661,7 +661,7 @@ export default function Home() {
               Najczęściej zadawane pytania
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {faqItems.map((faq, i) => (
               <details
                 key={i}
@@ -702,8 +702,7 @@ export default function Home() {
                 Dołącz do naszej społeczności
               </h2>
               <p className="mt-6 text-text-secondary text-lg leading-relaxed">
-                Skontaktuj się z nami, by dołączyć do społeczności „Nieruchomości
-                Spod Lady". Razem budujmy profesjonalizm, wspierajmy się i
+                Skontaktuj się z nami, by dołączyć do społeczności „Nieruchomości Spod&nbsp;Lady". Razem budujmy profesjonalizm, wspierajmy się i
                 odkrywajmy nowe możliwości na rynku nieruchomości!
               </p>
               <Image

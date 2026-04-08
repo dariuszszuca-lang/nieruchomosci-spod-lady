@@ -108,14 +108,14 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
               Najlepsi współpracują
             </span>
             <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
-              Dlaczego warto być agentem Spod Lady?
+              Dlaczego warto być agentem Spod&nbsp;Lady?
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {whyJoin.map((item) => (
               <div
                 key={item.title}
-                className="bg-white rounded-2xl p-8 border border-border/50 hover:shadow-xl hover:shadow-primary/5 transition-all"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-border/50 hover:shadow-xl hover:shadow-primary/5 transition-all"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-5">
                   {item.icon}
