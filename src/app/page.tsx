@@ -137,35 +137,33 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen bg-gradient-to-br from-[#0a1128] via-[#0f172a] to-[#1a2744] pt-24 overflow-hidden">
-        {/* Background map */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Full background image */}
+        <div className="absolute inset-0">
           <Image
-            src="/images/mapa-bg.png"
-            alt=""
-            width={700}
-            height={700}
-            className="opacity-[0.06] object-contain select-none"
-            aria-hidden="true"
+            src="/images/Nsl-baner-www.jpg"
+            alt="Nieruchomości Spod Lady"
+            fill
+            className="object-cover object-top"
+            priority
           />
+          {/* Dark gradient — strong left, lighter right so faces show */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128]/95 via-[#0a1128]/80 to-[#0a1128]/50" />
+          {/* Extra darken bottom for readability */}
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a1128] to-transparent" />
         </div>
 
-        {/* Glow effects */}
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
-          {/* Left — text */}
-          <div className="py-12 lg:py-0">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 pt-36">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-white/80 text-sm font-medium mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Ponad 1600 agentów w całej Polsce
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold text-white leading-[1.1] font-[family-name:var(--font-montserrat)] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] font-[family-name:var(--font-montserrat)] tracking-tight">
               Ogólnopolska sieć agentów{" "}
               <span className="text-primary whitespace-nowrap">spod lady</span>
             </h1>
-            <p className="mt-6 text-lg text-white/50 leading-relaxed max-w-lg">
+            <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-lg">
               Współpraca, a nie rywalizacja, prowadzi do prawdziwego sukcesu.
               Dołącz do największej społeczności pośredników nieruchomości w
               Polsce.
@@ -182,61 +180,27 @@ export default function Home() {
               </Link>
               <Link
                 href="/poznaj-nas"
-                className="inline-flex items-center justify-center px-8 py-4 text-white/70 font-medium rounded-full border border-white/15 hover:bg-white/5 hover:border-white/30 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 text-white/70 font-medium rounded-full border border-white/15 hover:bg-white/5 hover:border-white/30 backdrop-blur-sm transition-all"
               >
                 Poznaj nas
               </Link>
             </div>
 
             {/* Trust badges */}
-            <div className="mt-12 flex items-center gap-6 text-white/30 text-sm">
+            <div className="mt-12 flex items-center gap-6 text-white/40 text-sm">
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-primary/60" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 8 regionów
               </div>
               <div className="w-px h-4 bg-white/10" />
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-primary/60" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 15+ lat
               </div>
               <div className="w-px h-4 bg-white/10" />
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-primary/60" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 Off-market
-              </div>
-            </div>
-          </div>
-
-          {/* Right — styled image */}
-          <div className="relative hidden lg:flex items-center justify-center">
-            <div className="relative">
-              {/* Decorative ring */}
-              <div className="absolute -inset-4 rounded-3xl border-2 border-primary/20 rotate-2" />
-              <div className="absolute -inset-8 rounded-3xl border border-primary/10 -rotate-1" />
-
-              {/* Main image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/Nsl-baner-www.jpg"
-                  alt="Nieruchomości Spod Lady — agenci"
-                  width={580}
-                  height={420}
-                  className="object-cover"
-                  priority
-                />
-                {/* Gradient overlay bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0f172a]/60 to-transparent" />
-              </div>
-
-              {/* Floating stat card */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl px-6 py-4 border border-border/50">
-                <div className="text-2xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">1600+</div>
-                <div className="text-xs text-text-secondary">aktywnych agentów</div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-primary text-white rounded-xl shadow-lg px-4 py-2.5 text-sm font-semibold">
-                #1 w Polsce
               </div>
             </div>
           </div>
@@ -447,7 +411,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
               </div>
             ))}
           </div>
