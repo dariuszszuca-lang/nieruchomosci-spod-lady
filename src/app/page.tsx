@@ -290,14 +290,19 @@ export default function Home() {
               </p>
             </div>
             <div className="relative">
-              <div className="absolute -inset-4 bg-primary/5 rounded-3xl -z-10" />
+              <div className="absolute -inset-4 rounded-3xl border-2 border-primary/15 rotate-1 -z-10" />
+              <div className="absolute -inset-8 rounded-3xl border border-primary/10 -rotate-1 -z-10" />
               <Image
-                src="/images/wspolne-transakcje-spod-lady.jpg"
-                alt="Wspólne transakcje"
+                src="/images/o-spolecznosci.jpg"
+                alt="Spotkanie agentów Nieruchomości Spod Lady"
                 width={600}
                 height={400}
-                className="rounded-2xl shadow-xl w-full object-cover"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
+              <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl px-5 py-3">
+                <div className="text-xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">8 regionów</div>
+                <div className="text-xs text-text-secondary">w całej Polsce</div>
+              </div>
             </div>
           </div>
         </div>
@@ -337,7 +342,7 @@ export default function Home() {
                   <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <p className="text-white/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                  <p className="text-white text-sm leading-relaxed font-medium">
                     {item}
                   </p>
                 </div>
@@ -348,13 +353,17 @@ export default function Home() {
       </section>
 
       {/* VALUES */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/bg-apartment.jpg" alt="" fill className="object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#0f172a]/92" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Nasze wartości
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white font-[family-name:var(--font-montserrat)]">
               Budujemy silną markę zawodu i podnosimy standardy
             </h2>
           </div>
@@ -362,13 +371,15 @@ export default function Home() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="card-hover bg-white rounded-2xl p-6 border border-border/50 text-center"
+                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all text-center"
               >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="font-semibold text-foreground mb-2">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 text-3xl group-hover:bg-primary/20 group-hover:scale-110 transition-all">
+                  {value.icon}
+                </div>
+                <h3 className="font-semibold text-white mb-2 text-lg">
                   {value.title}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
                   {value.desc}
                 </p>
               </div>
@@ -538,14 +549,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PARTNERS */}
-      <section className="py-16 border-y border-border/50">
+      {/* PARTNERS — marquee */}
+      <section className="py-16 border-y border-border/50 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-text-secondary uppercase tracking-wider font-semibold mb-10">
             Współpracujemy
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+        </div>
+        <div className="relative">
+          <div className="flex animate-marquee gap-16 items-center">
             {[
+              "/images/partners/1.png",
+              "/images/partners/2.png",
+              "/images/partners/3.png",
+              "/images/partners/logo-ssrn.png",
+              "/images/partners/Giraffe360.png",
+              "/images/partners/UG.png",
+              "/images/partners/nieruchomosci-online.png",
               "/images/partners/1.png",
               "/images/partners/2.png",
               "/images/partners/3.png",
@@ -558,9 +578,9 @@ export default function Home() {
                 key={i}
                 src={logo}
                 alt="Partner"
-                width={120}
-                height={48}
-                className="h-10 w-auto object-contain"
+                width={160}
+                height={64}
+                className="h-14 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
               />
             ))}
           </div>
@@ -568,26 +588,34 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 sm:py-32 text-white overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <Image src="/images/bg-apartment.jpg" alt="" fill className="object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#0f172a]/92" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               FAQ
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold font-[family-name:var(--font-montserrat)]">
               Najczęściej zadawane pytania
             </h2>
           </div>
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {faqItems.map((faq, i) => (
               <details
                 key={i}
-                className="group bg-white rounded-2xl border border-border/50 overflow-hidden"
+                className="group bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/40 overflow-hidden transition-all"
               >
-                <summary className="flex items-center justify-between cursor-pointer p-6 font-semibold text-foreground hover:text-primary transition-colors">
-                  {faq.q}
+                <summary className="flex items-center justify-between cursor-pointer p-6 font-semibold text-white hover:text-primary transition-colors">
+                  <span className="flex items-start gap-3">
+                    <span className="text-primary/60 font-bold text-sm mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                    {faq.q}
+                  </span>
                   <svg
-                    className="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform flex-shrink-0 ml-4"
+                    className="w-5 h-5 text-white/30 group-open:rotate-180 transition-transform flex-shrink-0 ml-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -595,7 +623,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-6 pb-6 text-text-secondary leading-relaxed">
+                <div className="px-6 pb-6 pl-14 text-white/50 leading-relaxed text-sm">
                   {faq.a}
                 </div>
               </details>

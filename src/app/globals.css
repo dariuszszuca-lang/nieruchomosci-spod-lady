@@ -109,3 +109,18 @@ html {
 .bg-gradient-dark {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
