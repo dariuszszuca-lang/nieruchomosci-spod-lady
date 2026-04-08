@@ -454,38 +454,64 @@ export default function Home() {
       </section>
 
       {/* MEMBERSHIP REQUIREMENTS */}
-      <section className="py-24 bg-gradient-premium">
+      <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Wymagania
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
-              Kto może zostać członkiem?
-            </h2>
-            <p className="mt-6 text-text-secondary text-lg leading-relaxed">
-              Członkiem Nieruchomości Spod Lady może zostać czynny pośrednik nieruchomości, który:
-            </p>
-          </div>
-          <div className="mt-12 max-w-2xl mx-auto space-y-4">
-            {[
-              "Pracuje w branży co najmniej 3 miesiące",
-              "Posiada aktualną polisę OC w tym zakresie",
-              "Przeważający rodzaj jego działalności (PKD) to pośrednictwo w obrocie nieruchomościami",
-              "Lub jest osobą zatrudnioną w biurze nieruchomości, które posiada aktualną polisę OC",
-            ].map((req, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 bg-white rounded-xl p-5 border border-border/50"
-              >
-                <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-foreground font-medium">{req}</p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left — text & requirements */}
+            <div>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Wymagania
+              </span>
+              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)] leading-tight">
+                Kto może zostać członkiem?
+              </h2>
+              <p className="mt-6 text-text-secondary text-lg leading-relaxed">
+                Członkiem Nieruchomości Spod Lady może zostać czynny pośrednik nieruchomości, który spełnia poniższe warunki:
+              </p>
+
+              <div className="mt-10 space-y-5">
+                {[
+                  { num: "01", text: "Pracuje w branży co najmniej 3 miesiące" },
+                  { num: "02", text: "Posiada aktualną polisę OC w tym zakresie" },
+                  { num: "03", text: "Przeważający rodzaj jego działalności (PKD) to pośrednictwo w obrocie nieruchomościami" },
+                  { num: "04", text: "Lub jest osobą zatrudnioną w biurze nieruchomości, które posiada aktualną polisę OC" },
+                ].map((req) => (
+                  <div
+                    key={req.num}
+                    className="flex items-start gap-5 group"
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary font-bold text-sm group-hover:bg-primary group-hover:text-white transition-all">
+                      {req.num}
+                    </div>
+                    <div className="pt-2.5">
+                      <p className="text-foreground font-medium leading-relaxed">{req.text}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              <Link
+                href="/czlonkostwo"
+                className="mt-10 inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-all shadow-lg shadow-primary/25 hover:scale-105 text-lg"
+              >
+                Sprawdź swój region
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Right — image */}
+            <div className="relative hidden lg:block">
+              <div className="absolute -inset-4 bg-primary/5 rounded-3xl -z-10 rotate-1" />
+              <Image
+                src="/images/wspolne-transakcje-spod-lady.jpg"
+                alt="Wspólne transakcje agentów"
+                width={580}
+                height={420}
+                className="rounded-2xl shadow-xl w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
