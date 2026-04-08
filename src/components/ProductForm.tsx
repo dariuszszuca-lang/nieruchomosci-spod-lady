@@ -59,7 +59,9 @@ export function ProductForm({ product }: ProductFormProps) {
     try {
       let imageUrl = product?.image || "";
       if (imageFile) {
+        console.log("Uploading image...");
         imageUrl = await uploadImage(imageFile);
+        console.log("Image uploaded:", imageUrl);
       }
 
       const data = {
@@ -76,19 +78,29 @@ export function ProductForm({ product }: ProductFormProps) {
         updatedAt: Date.now(),
       };
 
+      console.log("Saving to Firestore...", data);
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Timeout — Firestore nie odpowiada po 10s")), 10000)
+      );
+
       if (product) {
-        await updateDoc(doc(db, "products", product.id), data);
+        await Promise.race([
+          updateDoc(doc(db, "products", product.id), data),
+          timeoutPromise,
+        ]);
       } else {
-        await addDoc(collection(db, "products"), {
-          ...data,
-          createdAt: Date.now(),
-        });
+        await Promise.race([
+          addDoc(collection(db, "products"), { ...data, createdAt: Date.now() }),
+          timeoutPromise,
+        ]);
       }
 
+      console.log("Saved!");
       router.push("/admin/produkty");
     } catch (err) {
-      console.error(err);
-      alert("Błąd zapisu");
+      console.error("Save error:", err);
+      alert("Błąd zapisu: " + (err instanceof Error ? err.message : "Nieznany błąd"));
     } finally {
       setSaving(false);
     }
