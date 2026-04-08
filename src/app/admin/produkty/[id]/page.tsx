@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { getDocument } from "@/lib/firestore-rest";
 import { type Product } from "@/lib/types";
 import { ProductForm } from "@/components/ProductForm";
 import { useParams } from "next/navigation";
@@ -15,10 +14,8 @@ export default function EditProductPage() {
   useEffect(() => {
     async function fetch() {
       const id = params.id as string;
-      const snap = await getDoc(doc(db, "products", id));
-      if (snap.exists()) {
-        setProduct({ id: snap.id, ...snap.data() } as Product);
-      }
+      const doc = await getDocument("products", id);
+      if (doc) setProduct(doc as unknown as Product);
       setLoading(false);
     }
     fetch();

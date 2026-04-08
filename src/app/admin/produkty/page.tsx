@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { collection, getDocs, doc, updateDoc, deleteDoc, orderBy, query } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { getDocuments, updateDocument, deleteDocument } from "@/lib/firestore-rest";
 import { type Product, CATEGORIES } from "@/lib/types";
 
 export default function ProductsPage() {
@@ -12,22 +11,25 @@ export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
 
   async function fetchProducts() {
-    const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
-    const snap = await getDocs(q);
-    setProducts(snap.docs.map((d) => ({ id: d.id, ...d.data() } as Product)));
+    try {
+      const docs = await getDocuments("products");
+      setProducts(docs as unknown as Product[]);
+    } catch (err) {
+      console.error(err);
+    }
     setLoading(false);
   }
 
   useEffect(() => { fetchProducts(); }, []);
 
   async function toggleActive(product: Product) {
-    await updateDoc(doc(db, "products", product.id), { active: !product.active });
+    await updateDocument("products", product.id, { active: !product.active });
     fetchProducts();
   }
 
   async function handleDelete(product: Product) {
     if (!confirm(`Usunąć "${product.name}"?`)) return;
-    await deleteDoc(doc(db, "products", product.id));
+    await deleteDocument("products", product.id);
     fetchProducts();
   }
 
@@ -77,13 +79,7 @@ export default function ProductsPage() {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       {product.image ? (
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
+                        <Image src={product.image} alt={product.name} width={48} height={48} className="w-12 h-12 rounded-lg object-cover" unoptimized />
                       ) : (
                         <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,44 +87,29 @@ export default function ProductsPage() {
                           </svg>
                         </div>
                       )}
-                      <div>
-                        <div className="font-medium text-foreground">{product.name}</div>
-                        <div className="text-xs text-gray-400 sm:hidden">{CATEGORIES[product.category]}</div>
-                      </div>
+                      <div className="font-medium text-foreground">{product.name}</div>
                     </div>
                   </td>
                   <td className="px-6 py-4 hidden sm:table-cell">
                     <span className="px-2.5 py-1 rounded-full bg-gray-100 text-xs font-medium text-gray-600">
-                      {CATEGORIES[product.category]}
+                      {CATEGORIES[product.category] || product.category}
                     </span>
                   </td>
-                  <td className="px-6 py-4 font-semibold text-foreground">
-                    {product.price} zł
-                  </td>
+                  <td className="px-6 py-4 font-semibold text-foreground">{product.price} zł</td>
                   <td className="px-6 py-4 hidden sm:table-cell">
                     <button
                       onClick={() => toggleActive(product)}
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        product.active
-                          ? "bg-green-50 text-green-700"
-                          : "bg-gray-100 text-gray-500"
-                      }`}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${product.active ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}
                     >
                       {product.active ? "Aktywny" : "Ukryty"}
                     </button>
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <Link
-                        href={`/admin/produkty/${product.id}`}
-                        className="px-3 py-1.5 text-xs font-medium text-primary bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors"
-                      >
+                      <Link href={`/admin/produkty/${product.id}`} className="px-3 py-1.5 text-xs font-medium text-primary bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors">
                         Edytuj
                       </Link>
-                      <button
-                        onClick={() => handleDelete(product)}
-                        className="px-3 py-1.5 text-xs font-medium text-red-500 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
-                      >
+                      <button onClick={() => handleDelete(product)} className="px-3 py-1.5 text-xs font-medium text-red-500 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
                         Usuń
                       </button>
                     </div>

@@ -2,23 +2,18 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { collection, getCountFromServer } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { getDocuments } from "@/lib/firestore-rest";
 
 export default function AdminDashboard() {
   const [productCount, setProductCount] = useState<number | null>(null);
-  const [orderCount, setOrderCount] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchCounts() {
       try {
-        const products = await getCountFromServer(collection(db, "products"));
-        setProductCount(products.data().count);
-        const orders = await getCountFromServer(collection(db, "orders"));
-        setOrderCount(orders.data().count);
+        const products = await getDocuments("products");
+        setProductCount(products.length);
       } catch {
         setProductCount(0);
-        setOrderCount(0);
       }
     }
     fetchCounts();
@@ -35,12 +30,6 @@ export default function AdminDashboard() {
           <div className="text-sm text-gray-500 mb-1">Produkty</div>
           <div className="text-3xl font-bold text-foreground">
             {productCount !== null ? productCount : "..."}
-          </div>
-        </div>
-        <div className="bg-white rounded-2xl p-6 border border-gray-200">
-          <div className="text-sm text-gray-500 mb-1">Zamówienia</div>
-          <div className="text-3xl font-bold text-foreground">
-            {orderCount !== null ? orderCount : "..."}
           </div>
         </div>
         <div className="bg-white rounded-2xl p-6 border border-gray-200">
