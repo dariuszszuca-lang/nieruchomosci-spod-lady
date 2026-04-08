@@ -138,23 +138,24 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Full background image */}
+        {/* Background — real estate photo, heavily darkened */}
         <div className="absolute inset-0">
           <Image
-            src="/images/Nsl-baner-www.jpg"
-            alt="Nieruchomości Spod Lady"
+            src="/images/hero-bg.jpg"
+            alt=""
             fill
-            className="object-cover object-top"
+            className="object-cover"
             priority
           />
-          {/* Dark gradient — strong left, lighter right so faces show */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128]/95 via-[#0a1128]/80 to-[#0a1128]/50" />
-          {/* Extra darken bottom for readability */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a1128] to-transparent" />
+          <div className="absolute inset-0 bg-[#0a1128]/85" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 pt-36">
-          <div className="max-w-xl">
+        {/* Subtle glow */}
+        <div className="absolute top-1/3 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[128px]" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen pt-28 pb-16">
+          {/* Left — text */}
+          <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-white/80 text-sm font-medium mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Ponad 1600 agentów w całej Polsce
@@ -202,6 +203,24 @@ export default function Home() {
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 Off-market
               </div>
+            </div>
+          </div>
+
+          {/* Right — agents photo */}
+          <div className="relative hidden lg:block">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+              <Image
+                src="/images/Nsl-baner-www.jpg"
+                alt="Nieruchomości Spod Lady — agenci"
+                width={600}
+                height={440}
+                className="object-cover w-full"
+              />
+            </div>
+            {/* Floating stat */}
+            <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-3">
+              <div className="text-2xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">1600+</div>
+              <div className="text-xs text-text-secondary">aktywnych agentów</div>
             </div>
           </div>
         </div>
@@ -270,10 +289,11 @@ export default function Home() {
       </section>
 
       {/* WE KNOW FIRST */}
-      <section className="relative py-24 sm:py-32 bg-gradient-dark text-white overflow-hidden">
-        {/* Background map subtle */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-          <Image src="/images/mapa-bg.png" alt="" width={500} height={500} className="opacity-[0.04] select-none" aria-hidden="true" />
+      <section className="relative py-24 sm:py-32 text-white overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0">
+          <Image src="/images/bg-apartment.jpg" alt="" fill className="object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#0f172a]/90" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
@@ -343,10 +363,11 @@ export default function Home() {
       </section>
 
       {/* BENEFITS */}
-      <section className="relative py-24 bg-gradient-dark text-white overflow-hidden">
-        {/* Background map */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 pointer-events-none">
-          <Image src="/images/mapa-bg.png" alt="" width={600} height={600} className="opacity-[0.04] select-none" aria-hidden="true" />
+      <section className="relative py-24 text-white overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0">
+          <Image src="/images/bg-konferencja.jpg" alt="" fill className="object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#0f172a]/90" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
