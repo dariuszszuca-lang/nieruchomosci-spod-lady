@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# gcloud
+google-cloud-sdk/
+google-cloud-cli-*.tar.gz
+cors.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
