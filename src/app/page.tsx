@@ -138,11 +138,20 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen bg-gradient-to-br from-[#0a1128] via-[#0f172a] to-[#1a2744] pt-24 overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        {/* Background map */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <Image
+            src="/images/mapa-bg.png"
+            alt=""
+            width={700}
+            height={700}
+            className="opacity-[0.06] object-contain select-none"
+            aria-hidden="true"
+          />
+        </div>
 
         {/* Glow effects */}
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-[128px]" />
         <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
@@ -297,8 +306,12 @@ export default function Home() {
       </section>
 
       {/* WE KNOW FIRST */}
-      <section className="py-24 sm:py-32 bg-gradient-dark text-white overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 sm:py-32 bg-gradient-dark text-white overflow-hidden">
+        {/* Background map subtle */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+          <Image src="/images/mapa-bg.png" alt="" width={500} height={500} className="opacity-[0.04] select-none" aria-hidden="true" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
             {/* Left — heading */}
             <div>
@@ -366,8 +379,12 @@ export default function Home() {
       </section>
 
       {/* BENEFITS */}
-      <section className="py-24 bg-gradient-dark text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 bg-gradient-dark text-white overflow-hidden">
+        {/* Background map */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 pointer-events-none">
+          <Image src="/images/mapa-bg.png" alt="" width={600} height={600} className="opacity-[0.04] select-none" aria-hidden="true" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Członkostwo
