@@ -94,7 +94,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
   return (
     <>
       <PageHero
-        title={`Nieruchomości Spod Lady ${region.name}`}
+        title={`Nieruchomości Spod\u00A0Lady ${region.name}`}
         subtitle="Najlepsze oferty, to te których nie ma. Dołącz do społeczności agentów, którzy wierzą, że współpraca prowadzi do sukcesu."
         badge={region.city}
         image={region.heroImage}
@@ -206,7 +206,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
                 Twoi koordynatorzy
               </span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
-                Kto troszczy się o społeczność w regionie {region.name}?
+                Kto troszczy się o społeczność w&nbsp;regionie {region.name}?
               </h2>
             </div>
             <div className={`grid gap-8 max-w-4xl mx-auto ${region.coordinators.length === 1 ? "max-w-sm" : "sm:grid-cols-2"}`}>

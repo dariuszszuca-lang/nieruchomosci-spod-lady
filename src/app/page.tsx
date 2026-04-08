@@ -193,7 +193,7 @@ const faqItems = [
     a: "Tak, członkowie mają możliwość promocji swojej agencji w ramach grupy. Wspieramy się nawzajem i promujemy profesjonalizm.",
   },
   {
-    q: 'Jak dołączyć do "Nieruchomości Spod Lady"?',
+    q: 'Jak dołączyć do "Nieruchomości Spod\u00A0Lady"?',
     a: "Skontaktuj się z nami poprzez formularz kontaktowy na stronie. Nasz zespół skontaktuje się z Tobą i przedstawi proces rejestracji.",
   },
 ];
@@ -331,7 +331,7 @@ export default function Home() {
                 O społeczności
               </span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground leading-tight font-[family-name:var(--font-montserrat)]">
-                Poznaj Nieruchomości Spod Lady — społeczność, która{" "}
+                Poznaj Nieruchomości Spod&nbsp;Lady — społeczność, która{" "}
                 <span className="gradient-text">sprzedaje</span>
               </h2>
               <p className="mt-6 text-text-secondary leading-relaxed text-lg">
@@ -521,7 +521,7 @@ export default function Home() {
                 Kto może zostać członkiem?
               </h2>
               <p className="mt-6 text-text-secondary text-lg leading-relaxed">
-                Członkiem Nieruchomości Spod Lady może zostać czynny pośrednik nieruchomości, który spełnia poniższe warunki:
+                Członkiem Nieruchomości Spod&nbsp;Lady może zostać czynny pośrednik nieruchomości, który spełnia poniższe warunki:
               </p>
 
               <div className="mt-10 space-y-5">

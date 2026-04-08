@@ -84,10 +84,10 @@ export default function PoznajNas() {
               Nasza historia
             </span>
             <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
-              Jak powstały Nieruchomości Spod Lady?
+              Jak powstały Nieruchomości{" "}<span className="whitespace-nowrap">Spod Lady?</span>
             </h2>
             <p className="mt-6 text-text-secondary text-lg leading-relaxed">
-              Nieruchomości Spod Lady to społeczność ponad 1600 agentów nieruchomości,
+              Nieruchomości Spod&nbsp;Lady to społeczność ponad 1600 agentów nieruchomości,
               którzy wierzą, że współpraca, a nie rywalizacja, prowadzi do prawdziwego
               sukcesu. Działamy w 8 regionach Polski, łącząc profesjonalistów z całego
               kraju.
