@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Gallery } from "@/components/Gallery";
 
 const regions = [
   { name: "Trójmiasto", href: "/regiony/pomorskie", image: "/images/regions/region-Trojmiasto.jpg" },
@@ -434,22 +435,7 @@ export default function Home() {
               Codziennie robimy wspólne transakcje „spod lady" oszczędzając czas, pieniądze i dostarczając wartość naszym klientom.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((img, i) => (
-              <div
-                key={i}
-                className="relative aspect-square rounded-2xl overflow-hidden group"
-              >
-                <Image
-                  src={img}
-                  alt={`Transakcja ${i + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              </div>
-            ))}
-          </div>
+          <Gallery />
         </div>
       </section>
 
@@ -505,8 +491,8 @@ export default function Home() {
             <div className="relative hidden lg:block">
               <div className="absolute -inset-4 bg-primary/5 rounded-3xl -z-10 rotate-1" />
               <Image
-                src="/images/wspolne-transakcje-spod-lady.jpg"
-                alt="Wspólne transakcje agentów"
+                src="/images/czlonkostwo-agenci.jpg"
+                alt="Najlepsi Agenci Współpracują — Nieruchomości Spod Lady"
                 width={580}
                 height={420}
                 className="rounded-2xl shadow-xl w-full object-cover"
