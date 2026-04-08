@@ -35,7 +35,7 @@ export function Navigation() {
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-[100]">
       {/* Top accent line */}
       <div className="h-1 bg-gradient-to-r from-primary via-primary-dark to-primary" />
 
@@ -144,7 +144,7 @@ export function Navigation() {
 
         {/* Mobile menu — fullscreen overlay */}
         {mobileOpen && (
-          <div className="lg:hidden fixed inset-0 top-[calc(5rem+4px)] bg-white z-50 overflow-y-auto">
+          <div className="lg:hidden fixed inset-0 top-[calc(5rem+4px)] bg-white z-[999] overflow-y-auto">
             <div className="px-6 py-8 space-y-1">
               {navLinks.map((link) => (
                 <div key={link.href}>
