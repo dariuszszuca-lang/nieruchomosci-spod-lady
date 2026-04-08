@@ -1,6 +1,18 @@
+import { auth } from "./firebase";
+
 const PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "";
 const API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "";
 const BASE = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents`;
+
+async function getAuthHeaders(): Promise<Record<string, string>> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  const user = auth.currentUser;
+  if (user) {
+    const token = await user.getIdToken();
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  return headers;
+}
 
 function toFirestoreValue(val: unknown): Record<string, unknown> {
   if (typeof val === "string") return { stringValue: val };
@@ -42,9 +54,10 @@ function fromDoc(doc: { name: string; fields: Record<string, Record<string, unkn
 }
 
 export async function addDocument(collectionName: string, data: Record<string, unknown>) {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${BASE}/${collectionName}?key=${API_KEY}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({ fields: toFields(data) }),
   });
   if (!res.ok) throw new Error(`Firestore POST error: ${res.status} ${await res.text()}`);
@@ -52,10 +65,11 @@ export async function addDocument(collectionName: string, data: Record<string, u
 }
 
 export async function updateDocument(collectionName: string, docId: string, data: Record<string, unknown>) {
+  const headers = await getAuthHeaders();
   const updateMask = Object.keys(data).map((k) => `updateMask.fieldPaths=${k}`).join("&");
   const res = await fetch(`${BASE}/${collectionName}/${docId}?${updateMask}&key=${API_KEY}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({ fields: toFields(data) }),
   });
   if (!res.ok) throw new Error(`Firestore PATCH error: ${res.status} ${await res.text()}`);
@@ -63,7 +77,8 @@ export async function updateDocument(collectionName: string, docId: string, data
 }
 
 export async function deleteDocument(collectionName: string, docId: string) {
-  const res = await fetch(`${BASE}/${collectionName}/${docId}?key=${API_KEY}`, { method: "DELETE" });
+  const headers = await getAuthHeaders();
+  const res = await fetch(`${BASE}/${collectionName}/${docId}?key=${API_KEY}`, { method: "DELETE", headers });
   if (!res.ok) throw new Error(`Firestore DELETE error: ${res.status}`);
 }
 

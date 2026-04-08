@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { addDocument, updateDocument } from "@/lib/firestore-rest";
+import { auth } from "@/lib/firebase";
 import { type Product, CATEGORIES } from "@/lib/types";
 
 const STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "";
@@ -11,11 +12,13 @@ const STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "";
 async function uploadFile(file: File): Promise<string> {
   const filename = `products/${Date.now()}-${file.name.replace(/\s/g, "_")}`;
   const url = `https://firebasestorage.googleapis.com/v0/b/${STORAGE_BUCKET}/o?name=${encodeURIComponent(filename)}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": file.type },
-    body: file,
-  });
+  const headers: Record<string, string> = { "Content-Type": file.type };
+  const user = auth.currentUser;
+  if (user) {
+    const token = await user.getIdToken();
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  const res = await fetch(url, { method: "POST", headers, body: file });
   if (!res.ok) throw new Error(`Upload error: ${res.status}`);
   const json = await res.json();
   return `https://firebasestorage.googleapis.com/v0/b/${STORAGE_BUCKET}/o/${encodeURIComponent(json.name)}?alt=media`;
