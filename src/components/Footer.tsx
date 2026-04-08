@@ -60,7 +60,7 @@ export function Footer() {
                 alt="Nieruchomości Spod Lady"
                 width={48}
                 height={48}
-                className="rounded-xl invert brightness-200"
+                className="rounded-xl brightness-0 invert"
               />
               <div>
                 <span className="text-lg font-semibold tracking-tight">
