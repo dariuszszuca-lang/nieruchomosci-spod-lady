@@ -351,17 +351,13 @@ export default function Home() {
       </section>
 
       {/* VALUES */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/bg-apartment.jpg" alt="" fill className="object-cover" aria-hidden="true" />
-          <div className="absolute inset-0 bg-[#0f172a]/92" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-24 sm:py-32 bg-gradient-premium">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Nasze wartości
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white font-[family-name:var(--font-montserrat)]">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
               Budujemy silną markę zawodu i podnosimy standardy
             </h2>
           </div>
@@ -369,15 +365,15 @@ export default function Home() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all text-center"
+                className="card-hover group bg-white rounded-2xl p-8 border border-border/50 text-center"
               >
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 text-3xl group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                   {value.icon}
                 </div>
-                <h3 className="font-semibold text-white mb-2 text-lg">
+                <h3 className="font-semibold text-foreground mb-2 text-lg">
                   {value.title}
                 </h3>
-                <p className="text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                <p className="text-sm text-text-secondary leading-relaxed">
                   {value.desc}
                 </p>
               </div>
