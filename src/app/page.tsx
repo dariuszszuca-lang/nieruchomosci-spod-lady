@@ -143,20 +143,20 @@ export default function Home() {
             src="/images/Nsl-baner-www.jpg"
             alt="Nieruchomości Spod Lady"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/75 to-[#0f172a]/40" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl lg:ml-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-sm mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Ponad 1600 agentów w całej Polsce
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] font-[family-name:var(--font-montserrat)] tracking-tight">
               Ogólnopolska sieć agentów{" "}
-              <span className="text-primary">spod lady</span>
+              <span className="text-primary whitespace-nowrap">spod lady</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/70 leading-relaxed max-w-xl">
               Współpraca, a nie rywalizacja, prowadzi do prawdziwego sukcesu.
