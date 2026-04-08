@@ -129,71 +129,63 @@ export function Navigation() {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2.5 rounded-xl bg-surface hover:bg-primary-light transition-colors"
+                className="lg:hidden w-11 h-11 rounded-xl bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
                 aria-label="Menu"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  {mobileOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </svg>
+                <div className="w-5 h-4 flex flex-col justify-between">
+                  <span className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                  <span className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 ${mobileOpen ? "opacity-0 scale-0" : ""}`} />
+                  <span className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+                </div>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — fullscreen overlay */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-border/30 bg-white px-4 pb-6 pt-4">
-            {navLinks.map((link) => (
-              <div key={link.href}>
+          <div className="lg:hidden fixed inset-0 top-[calc(5rem+4px)] bg-white z-50 overflow-y-auto">
+            <div className="px-6 py-8 space-y-1">
+              {navLinks.map((link) => (
+                <div key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => !link.children && setMobileOpen(false)}
+                    className="flex items-center justify-between py-4 px-4 text-lg font-semibold text-foreground hover:text-primary transition-colors rounded-xl hover:bg-primary-light/30"
+                  >
+                    {link.label}
+                    {link.children && (
+                      <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </Link>
+                  {link.children && (
+                    <div className="ml-4 border-l-2 border-primary/20 pl-4 mb-2">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="block py-2.5 px-3 text-base text-text-secondary hover:text-primary transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="pt-6">
                 <Link
-                  href={link.href}
-                  onClick={() => !link.children && setMobileOpen(false)}
-                  className="block py-3 px-4 text-base font-medium text-foreground/80 hover:text-primary transition-colors rounded-xl"
+                  href="/czlonkostwo"
+                  onClick={() => setMobileOpen(false)}
+                  className="block text-center px-6 py-4 bg-primary text-white text-lg font-semibold rounded-full shadow-lg shadow-primary/25"
                 >
-                  {link.label}
+                  Dołącz do nas
                 </Link>
-                {link.children && (
-                  <div className="ml-4 border-l-2 border-primary-light pl-4">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block py-2 text-sm text-text-secondary hover:text-primary transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
-            ))}
-            <Link
-              href="/czlonkostwo"
-              onClick={() => setMobileOpen(false)}
-              className="mt-4 block text-center px-6 py-3 bg-primary text-white font-semibold rounded-full"
-            >
-              Dołącz do nas
-            </Link>
+            </div>
           </div>
         )}
       </nav>

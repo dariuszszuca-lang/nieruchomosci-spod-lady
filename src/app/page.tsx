@@ -189,21 +189,19 @@ export default function Home() {
             </div>
 
             {/* Trust badges */}
-            <div className="mt-12 flex items-center gap-6 text-white/40 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                8 regionów
-              </div>
-              <div className="w-px h-4 bg-white/10" />
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                15+ lat
-              </div>
-              <div className="w-px h-4 bg-white/10" />
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Off-market
-              </div>
+            <div className="mt-12 flex flex-wrap items-center gap-5 sm:gap-8">
+              {[
+                { label: "8 regionów", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" },
+                { label: "1600+ agentów", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+                { label: "Off-market", icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" },
+              ].map((badge) => (
+                <div key={badge.label} className="flex items-center gap-2.5 text-white/70 text-sm font-medium">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={badge.icon} />
+                  </svg>
+                  {badge.label}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -247,7 +245,7 @@ export default function Home() {
           {[
             { number: "1600+", label: "Agentów" },
             { number: "8", label: "Regionów" },
-            { number: "15+", label: "Lat doświadczenia" },
+            { number: "15+", label: "Lat w branży" },
             { number: "∞", label: "Wspólnych transakcji" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
