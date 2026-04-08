@@ -56,7 +56,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
-                src="/images/logo-spodlady.png"
+                src="/images/nsl-logo.png"
                 alt="Nieruchomości Spod Lady"
                 width={48}
                 height={48}

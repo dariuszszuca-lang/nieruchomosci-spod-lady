@@ -41,7 +41,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/logo-spodlady.png"
+              src="/images/nsl-logo.png"
               alt="Nieruchomości Spod Lady"
               width={48}
               height={48}
