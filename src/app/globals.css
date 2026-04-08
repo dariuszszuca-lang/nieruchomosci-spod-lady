@@ -27,12 +27,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 /* Premium glass effect */
