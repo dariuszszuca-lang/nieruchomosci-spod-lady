@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #2EA3F2;
-  --primary-dark: #1a8fd8;
-  --primary-light: #e8f4fd;
+  --primary: #D6246E;
+  --primary-dark: #b81d5c;
+  --primary-light: #fdf0f5;
   --background: #ffffff;
   --foreground: #1a1a2e;
   --text-secondary: #64748b;
@@ -42,7 +42,7 @@ html {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #2EA3F2 0%, #1a8fd8 50%, #0f6bb5 100%);
+  background: linear-gradient(135deg, #D6246E 0%, #b81d5c 50%, #9c1850 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -72,7 +72,7 @@ html {
 }
 .card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(46, 163, 242, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(214, 36, 110, 0.15);
 }
 
 /* Section fade-in animation */
@@ -103,7 +103,7 @@ html {
 
 /* Smooth gradient background */
 .bg-gradient-premium {
-  background: linear-gradient(135deg, #f8fafc 0%, #e8f4fd 50%, #f0f9ff 100%);
+  background: linear-gradient(135deg, #fefafc 0%, #fdf0f5 50%, #fef5f9 100%);
 }
 
 .bg-gradient-dark {
