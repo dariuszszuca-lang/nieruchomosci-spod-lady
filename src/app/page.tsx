@@ -137,28 +137,19 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/Nsl-baner-www.jpg"
-            alt="Nieruchomości Spod Lady"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/75 to-[#0f172a]/40" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32">
-          <div className="max-w-2xl lg:ml-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-sm mb-8">
+      <section className="relative min-h-screen bg-[#0f172a] pt-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center min-h-[calc(100vh-5rem)]">
+          {/* Left — text */}
+          <div className="py-16 lg:py-24">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Ponad 1600 agentów w całej Polsce
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] font-[family-name:var(--font-montserrat)] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] font-[family-name:var(--font-montserrat)] tracking-tight">
               Ogólnopolska sieć agentów{" "}
               <span className="text-primary whitespace-nowrap">spod lady</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/70 leading-relaxed max-w-xl">
+            <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-lg">
               Współpraca, a nie rywalizacja, prowadzi do prawdziwego sukcesu.
               Dołącz do największej społeczności pośredników nieruchomości w
               Polsce.
@@ -175,19 +166,23 @@ export default function Home() {
               </Link>
               <Link
                 href="/poznaj-nas"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all"
               >
                 Poznaj nas
               </Link>
             </div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          {/* Right — image */}
+          <div className="relative hidden lg:block h-[calc(100vh-5rem)]">
+            <Image
+              src="/images/Nsl-baner-www.jpg"
+              alt="Nieruchomości Spod Lady — agenci"
+              fill
+              className="object-contain object-right-bottom"
+              priority
+            />
+          </div>
         </div>
       </section>
 

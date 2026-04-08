@@ -39,22 +39,15 @@ export function Navigation() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/nsl-logo.png"
               alt="Nieruchomości Spod Lady"
-              width={48}
+              width={160}
               height={48}
-              className="rounded-xl"
+              className="h-12 w-auto"
+              priority
             />
-            <div className="hidden sm:block">
-              <span className="text-lg font-semibold text-foreground tracking-tight">
-                Nieruchomości
-              </span>
-              <span className="block text-xs text-primary font-medium -mt-1 tracking-widest uppercase">
-                Spod Lady
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Nav */}
