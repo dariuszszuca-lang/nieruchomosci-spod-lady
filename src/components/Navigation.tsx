@@ -142,53 +142,54 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile menu — fullscreen overlay */}
-        {mobileOpen && (
-          <div className="lg:hidden fixed inset-0 top-[calc(5rem+4px)] bg-white z-[999] overflow-y-auto">
-            <div className="px-6 py-8 space-y-1">
-              {navLinks.map((link) => (
-                <div key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => !link.children && setMobileOpen(false)}
-                    className="flex items-center justify-between py-4 px-4 text-lg font-semibold text-foreground hover:text-primary transition-colors rounded-xl hover:bg-primary-light/30"
-                  >
-                    {link.label}
-                    {link.children && (
-                      <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </Link>
-                  {link.children && (
-                    <div className="ml-4 border-l-2 border-primary/20 pl-4 mb-2">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="block py-2.5 px-3 text-base text-text-secondary hover:text-primary transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-6">
+      </nav>
+
+      {/* Mobile menu — OUTSIDE nav (backdrop-filter creates stacking context) */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 top-[calc(5rem+4px)] bg-white z-[999] overflow-y-auto">
+          <div className="px-6 py-8 space-y-1">
+            {navLinks.map((link) => (
+              <div key={link.href}>
                 <Link
-                  href="/czlonkostwo"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-center px-6 py-4 bg-primary text-white text-lg font-semibold rounded-full shadow-lg shadow-primary/25"
+                  href={link.href}
+                  onClick={() => !link.children && setMobileOpen(false)}
+                  className="flex items-center justify-between py-4 px-4 text-lg font-semibold text-foreground hover:text-primary transition-colors rounded-xl hover:bg-primary-light/30"
                 >
-                  Dołącz do nas
+                  {link.label}
+                  {link.children && (
+                    <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
                 </Link>
+                {link.children && (
+                  <div className="ml-4 border-l-2 border-primary/20 pl-4 mb-2">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block py-2.5 px-3 text-base text-text-secondary hover:text-primary transition-colors"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
+            ))}
+            <div className="pt-6">
+              <Link
+                href="/czlonkostwo"
+                onClick={() => setMobileOpen(false)}
+                className="block text-center px-6 py-4 bg-primary text-white text-lg font-semibold rounded-full shadow-lg shadow-primary/25"
+              >
+                Dołącz do nas
+              </Link>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 }
