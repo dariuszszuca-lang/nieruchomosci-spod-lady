@@ -187,13 +187,12 @@ export default function Wydarzenia() {
                 key={event.title}
                 className="group bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-lg transition-all"
               >
-                <div className="relative overflow-hidden bg-gray-100">
+                <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
                   <Image
                     src={event.image}
                     alt={event.title}
-                    width={600}
-                    height={340}
-                    className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3">
                     <EventTypeBadge type={event.type} />
