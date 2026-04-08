@@ -72,13 +72,13 @@ export default function Sklep() {
                   key={product.id}
                   className="group bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl hover:shadow-primary/5 transition-all"
                 >
-                  <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-white">
                     {product.image ? (
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                         unoptimized
                       />
                     ) : (
