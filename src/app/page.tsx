@@ -297,30 +297,40 @@ export default function Home() {
       </section>
 
       {/* WE KNOW FIRST */}
-      <section className="py-24 bg-gradient-premium">
+      <section className="py-24 sm:py-32 bg-gradient-dark text-white overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Przewaga informacyjna
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-[family-name:var(--font-montserrat)]">
-              To my pierwsi wiemy o
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {knowledgeItems.map((item, i) => (
-              <div
-                key={i}
-                className="card-hover bg-white rounded-2xl p-6 border border-border/50"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center text-primary font-bold text-lg mb-4">
-                  {String(i + 1).padStart(2, "0")}
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
+            {/* Left — heading */}
+            <div>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Przewaga informacyjna
+              </span>
+              <h2 className="mt-4 text-4xl sm:text-5xl font-bold font-[family-name:var(--font-montserrat)] leading-tight">
+                To my pierwsi
+                <br />
+                <span className="gradient-text">wiemy o:</span>
+              </h2>
+              <p className="mt-6 text-white/40 leading-relaxed max-w-sm">
+                Nasi agenci mają dostęp do informacji, zanim pojawią się na rynku. To daje nieocenioną przewagę.
+              </p>
+            </div>
+
+            {/* Right — items */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {knowledgeItems.map((item, i) => (
+                <div
+                  key={i}
+                  className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 transition-all"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <p className="text-white/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    {item}
+                  </p>
                 </div>
-                <p className="text-foreground font-medium leading-relaxed">
-                  {item}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
