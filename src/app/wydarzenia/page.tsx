@@ -119,12 +119,13 @@ export default function Wydarzenia() {
                   className="group bg-white rounded-2xl overflow-hidden border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all"
                 >
                   <div className="grid lg:grid-cols-[1.2fr_1fr] gap-0">
-                    <div className="relative aspect-[16/8] lg:aspect-auto overflow-hidden">
+                    <div className="relative overflow-hidden bg-gray-100">
                       <Image
                         src={event.image}
                         alt={event.title}
-                        fill
-                        className="object-cover"
+                        width={800}
+                        height={420}
+                        className="w-full h-auto"
                       />
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col justify-center">
@@ -186,12 +187,13 @@ export default function Wydarzenia() {
                 key={event.title}
                 className="group bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-lg transition-all"
               >
-                <div className="aspect-[16/9] relative overflow-hidden">
+                <div className="relative overflow-hidden bg-gray-100">
                   <Image
                     src={event.image}
                     alt={event.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    width={600}
+                    height={340}
+                    className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3">
                     <EventTypeBadge type={event.type} />
