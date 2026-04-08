@@ -609,11 +609,11 @@ export default function Home() {
                 odkrywajmy nowe możliwości na rynku nieruchomości!
               </p>
               <Image
-                src="/images/nsl-agenci.jpg"
-                alt="Agenci NSL"
+                src="/images/kontakt-agenci.jpg"
+                alt="Wspólne transakcje agentów NSL"
                 width={500}
-                height={300}
-                className="mt-8 rounded-2xl shadow-lg"
+                height={200}
+                className="mt-8 rounded-2xl shadow-lg object-cover"
               />
             </div>
             <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-border/50">
