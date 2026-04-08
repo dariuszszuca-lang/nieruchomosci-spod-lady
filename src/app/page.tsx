@@ -359,7 +359,7 @@ export default function Home() {
                 alt="Spotkanie agentów Nieruchomości Spod Lady"
                 width={600}
                 height={400}
-                className="rounded-2xl shadow-2xl w-full object-cover"
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-[3/2] max-h-[420px]"
               />
               <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl px-5 py-3">
                 <div className="text-xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">8 regionów</div>
