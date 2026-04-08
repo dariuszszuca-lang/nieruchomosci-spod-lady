@@ -141,7 +141,7 @@ export default function Home() {
         {/* Background — real estate photo, heavily darkened */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/hero-apartment.jpg"
             alt=""
             fill
             className="object-cover"
