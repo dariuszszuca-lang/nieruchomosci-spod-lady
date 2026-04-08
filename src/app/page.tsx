@@ -206,21 +206,35 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right — agents photo */}
-          <div className="relative hidden lg:block">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
-              <Image
-                src="/images/Nsl-baner-www.jpg"
-                alt="Nieruchomości Spod Lady — agenci"
-                width={600}
-                height={440}
-                className="object-cover w-full"
-              />
-            </div>
-            {/* Floating stat */}
-            <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-3">
-              <div className="text-2xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">1600+</div>
-              <div className="text-xs text-text-secondary">aktywnych agentów</div>
+          {/* Right — styled image */}
+          <div className="relative hidden lg:flex items-center justify-center">
+            <div className="relative">
+              {/* Decorative rings */}
+              <div className="absolute -inset-4 rounded-3xl border-2 border-primary/20 rotate-2" />
+              <div className="absolute -inset-8 rounded-3xl border border-primary/10 -rotate-1" />
+
+              {/* Main image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/40">
+                <Image
+                  src="/images/Nsl-baner-www.jpg"
+                  alt="Nieruchomości Spod Lady — agenci"
+                  width={580}
+                  height={420}
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a1128]/60 to-transparent" />
+              </div>
+
+              {/* Floating stat card */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl px-6 py-4 border border-border/50">
+                <div className="text-2xl font-bold gradient-text font-[family-name:var(--font-montserrat)]">1600+</div>
+                <div className="text-xs text-text-secondary">aktywnych agentów</div>
+              </div>
+
+              {/* Floating badge */}
+              <div className="absolute -top-4 -right-4 bg-primary text-white rounded-xl shadow-lg px-4 py-2.5 text-sm font-semibold">
+                #1 w Polsce
+              </div>
             </div>
           </div>
         </div>
