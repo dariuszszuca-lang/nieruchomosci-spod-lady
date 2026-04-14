@@ -9,6 +9,18 @@ export const metadata: Metadata = {
 
 const upcomingEvents = [
   {
+    title: "Akademia AI dla Agentów Nieruchomości",
+    subtitle: "Praktyczny warsztat: Claude, Gemini, automatyzacje, AI w sprzedaży nieruchomości",
+    speaker: "Dariusz Szuca",
+    date: "22.04.2026",
+    time: "wtorek, 10:00",
+    type: "Szkolenie",
+    image: "/images/wydarzenia/webinar-odchudzamy-umowy.jpg",
+  },
+];
+
+const recentlyFinishedEvents = [
+  {
     title: "Odchudzamy umowy pośrednictwa",
     subtitle: "Jak stworzyć umowę prostą, skuteczną i taką, której klient nie będzie bał się podpisać",
     speaker: "Radca Prawny Sandra Anna Warda",
@@ -20,6 +32,14 @@ const upcomingEvents = [
 ];
 
 const pastEvents = [
+  {
+    title: "Odchudzamy umowy pośrednictwa",
+    subtitle: "Jak stworzyć umowę prostą, skuteczną i taką, której klient nie będzie bał się podpisać",
+    date: "09.04.2026",
+    location: "Online",
+    type: "Webinar",
+    image: "/images/wydarzenia/webinar-odchudzamy-umowy.jpg",
+  },
   {
     title: "Nowa Era Agenta",
     subtitle: "Współpraca, Technologia, Marka osobista!",
@@ -84,6 +104,7 @@ const pastEvents = [
 function EventTypeBadge({ type }: { type: string }) {
   const colors: Record<string, string> = {
     Webinar: "bg-blue-50 text-blue-700 border-blue-200",
+    Szkolenie: "bg-amber-50 text-amber-700 border-amber-200",
     Konferencja: "bg-purple-50 text-purple-700 border-purple-200",
     Integracja: "bg-pink-50 text-pink-700 border-pink-200",
   };
